@@ -1,4 +1,7 @@
-<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global">
+<aura:component controller="AccountController" implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global">
+    <aura:attribute name="mydata" type="Object"/>
+    <aura:attribute name="mycolumns" type="List"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
     <lightning:card title="Create Account">
         <lightning:notificationsLibrary aura:id="notifLib"/>
         <lightning:recordEditForm aura:id="recordEditForm" objectApiName="Account" onsuccess="{!c.handleSuccess}">
@@ -7,5 +10,9 @@
             <lightning:button type="submit" label="Create new"/>
             <lightning:button type="reset" label="Reset"/>
         </lightning:recordEditForm>
+        <lightning:datatable data="{!v.mydata}"
+            columns="{!v.mycolumns}"
+            keyField="Id"
+            hideCheckboxColumn="true"/>
     </lightning:card>
 </aura:component>
