@@ -6,25 +6,20 @@
  */
 @isTest
 public with sharing class TestBatchDeleteOpportunity {
-    private static final Integer numRecords = 200;
+    private static final Integer NUM_RECORDS = 200;
     @TestSetup
     static void makeData(){
-        List<SObject> ls = Test.loadData(Opportunity.getSObjectType(), 'testOpportunities');
-        List<Opportunity> opportunities = new List<Opportunity>();
-        for(SObject obj : ls){
-            opportunities.add((Opportunity) obj);
-        }
-        update opportunities;
+        update TestOpportunityFactory.createOpportunities();
     }
 
     @isTest
     static void test(){
-        System.assertEquals(numRecords, [SELECT COUNT() FROM Opportunity]);
+        System.assertEquals(NUM_RECORDS, [SELECT COUNT() FROM Opportunity]);
         Test.startTest();
         BatchDeleteOpportunity bdo = new BatchDeleteOpportunity();
         Id batchId = Database.executeBatch(bdo);
         Test.stopTest();
 
-        System.assertEquals(numRecords / 2, [SELECT COUNT() FROM Opportunity]);
+        System.assertEquals(NUM_RECORDS / 2, [SELECT COUNT() FROM Opportunity], 'The number of Opportunity records should be ' + NUM_RECORDS / 2 + '.');
     }
 }

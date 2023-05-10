@@ -5,6 +5,8 @@
         <members>BatchDeleteOpportunity</members>
         <members>ScheduleBatchDeleteOpportunity</members>
         <members>TestBatchDeleteOpportunity</members>
+        <members>TestOpportunityFactory</members>
+        <members>TestScheduleBatchDeleteOpportunity</members>
         <name>ApexClass</name>
     </types>
     <types>
