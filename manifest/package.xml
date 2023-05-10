@@ -4,6 +4,7 @@
         <members>AccountController</members>
         <members>BatchDeleteOpportunity</members>
         <members>ScheduleBatchDeleteOpportunity</members>
+        <members>TestBatchDeleteOpportunity</members>
         <name>ApexClass</name>
     </types>
     <types>

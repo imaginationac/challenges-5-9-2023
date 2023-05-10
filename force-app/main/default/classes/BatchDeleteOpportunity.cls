@@ -7,11 +7,13 @@
  */
 public with sharing class BatchDeleteOpportunity implements Database.Batchable<sObject>, Database.Stateful {
     public Integer recordsProcessed = 0;
-    public Database.QueryLocator start(Database.BatchableContext bc){
-        String query = 'SELECT Id FROM Opportunity ' +
-        'WHERE IsClosed = false AND ' +
-        'CreatedDate < TODAY - 30 * 6';
-        return Database.getQueryLocator(query);
+    public List<Opportunity> start(Database.BatchableContext bc){
+        Date sixMonthsAgo = Date.today().addMonths(6);
+        return [SELECT Id FROM Opportunity
+                WHERE StageName IN ('Closed - Won', 'Closed - Lost') AND
+                CreatedDate < :sixMonthsAgo
+                LIMIT 200
+        ];
     }
 
 
