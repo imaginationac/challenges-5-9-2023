@@ -5,7 +5,7 @@
             <lightning:messages/>
             <lightning:inputField fieldName="Name"/>
             <lightning:button type="submit" label="Create new"/>
-            <lightning:button type="cancel" onclick="{!c.handleReset}" label="Reset"/>
+            <lightning:button type="reset" label="Reset"/>
         </lightning:recordEditForm>
     </lightning:card>
 </aura:component>
