@@ -5,7 +5,7 @@
         <name>ApexClass</name>
     </types>
     <types>
-        <members>createNewAccounts</members>
+        <members>*</members>
         <name>ApexComponent</name>
     </types>
     <types>
@@ -21,7 +21,7 @@
         <name>ApexTrigger</name>
     </types>
     <types>
-        <members>*</members>
+        <members>createNewAccounts</members>
         <name>AuraDefinitionBundle</name>
     </types>
     <types>

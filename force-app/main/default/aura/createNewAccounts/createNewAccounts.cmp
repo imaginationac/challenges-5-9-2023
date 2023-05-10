@@ -1,6 +1,11 @@
-<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
-    <lightning:recordForm
-        objectApiName="Account"
-        fields="{!v.fields}"
-        onsuccess="{!c.handleSuccess}"/>
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global">
+    <lightning:card title="Create Account">
+        <lightning:notificationsLibrary aura:id="notifLib"/>
+        <lightning:recordEditForm aura:id="recordEditForm" objectApiName="Account" onsuccess="{!c.handleSuccess}">
+            <lightning:messages/>
+            <lightning:inputField fieldName="Name"/>
+            <lightning:button type="submit" label="Create new"/>
+            <lightning:button type="cancel" onclick="{!c.handleReset}" label="Reset"/>
+        </lightning:recordEditForm>
+    </lightning:card>
 </aura:component>
