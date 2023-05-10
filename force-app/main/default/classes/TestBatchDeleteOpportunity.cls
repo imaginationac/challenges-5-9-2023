@@ -1,17 +1,20 @@
+/**
+ * TestBatchDeleteOpportunity.cls
+ * Author(s): Dorian Alexander Patterson
+ *
+ * Test class for BatchDeleteOpportunity
+ */
 @isTest
 public with sharing class TestBatchDeleteOpportunity {
     private static final Integer numRecords = 200;
     @TestSetup
     static void makeData(){
+        List<SObject> ls = Test.loadData(Opportunity.getSObjectType(), 'testOpportunities');
         List<Opportunity> opportunities = new List<Opportunity>();
-        for(Integer i = 0 ; i < numRecords; i++){
-            Opportunity opp = new Opportunity();
-            opp.Name = 'Opportunity ' + i;
-            opp.CloseDate = Date.today() + 30;
-            opp.StageName = (i < numRecords / 2) ? 'Prospecting' : 'Closed - Won';
-            opportunities.add(opp);
+        for(SObject obj : ls){
+            opportunities.add((Opportunity) obj);
         }
-        insert opportunities;
+        update opportunities;
     }
 
     @isTest
